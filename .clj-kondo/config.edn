@@ -1,0 +1,5 @@
+{:linters
+ {:single-key-in {:level :warning}
+  :namespace-name-mismatch {:level :error}
+  :docstring-no-summary {:level :warning}
+  :unsorted-required-namespaces {:level :warning}}}

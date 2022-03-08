@@ -26,3 +26,7 @@ profiles.clj
 /classes/
 /lib/
 /target/
+
+#dev tools
+.clj-kondo/.cache/
+.lsp
