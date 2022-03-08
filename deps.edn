@@ -1,0 +1,10 @@
+{:deps {clj-spotify/clj-spotify {:mvn/version "0.1.10"}
+        com.taoensso/tufte {:mvn/version "2.2.0"}
+        cprop/cprop {:mvn/version "0.1.19"}
+        http-kit/http-kit {:mvn/version "2.3.0"}
+        org.clojure/clojure {:mvn/version "1.10.0"}
+        org.clojure/core.async {:mvn/version "1.5.648"}}
+ :paths ["src" "resources" "test"]
+ :aliases
+ {:dev
+  {:jvm-opts ["-XX:-OmitStackTraceInFastThrow"]}}}
