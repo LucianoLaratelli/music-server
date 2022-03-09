@@ -2,8 +2,11 @@
 
 * Introduction
 
-This is the backend for a project I'm working on. Start a REPL, eval =music-server.core=, then make requests on 3000. I've been using [[https://httpie.io/cli][httpie]]:
-#+begin_src sh :results value code
+This is the backend for a project I'm working on. Fill out =config.edn=, Start a
+REPL, eval =music-server.core=, then make requests on 3000. I've been using
+[[https://httpie.io/cli][httpie]]:
+
+#+begin_src sh
 http GET :3000/search-artists artist_name=="miles davis"
 #+end_src
 
@@ -24,76 +27,83 @@ http GET :3000/search-artists artist_name=="miles davis"
             "name": "Miles Davis Quintet",
             "popularity": 53
         },
-        {
-            "URL": "https://open.spotify.com/artist/4sQVPSDmfqIxG9W8o2EROX",
-            "id": "4sQVPSDmfqIxG9W8o2EROX",
-            "image": "https://i.scdn.co/image/ab67616d0000485164351626df25d938db9b9f2f",
-            "name": "Miles Davis Quartet",
-            "popularity": 36
-        },
-        {
-            "URL": "https://open.spotify.com/artist/1i4ed4I1y7YerI0fQV4lVc",
-            "id": "1i4ed4I1y7YerI0fQV4lVc",
-            "image": "https://i.scdn.co/image/ab67616d00004851fc610e983077edf3d076bcc4",
-            "name": "Miles Davis Sextet",
-            "popularity": 28
-        },
-        {
-            "URL": "https://open.spotify.com/artist/51gulqh1DpAHn0ZUNMRBRu",
-            "id": "51gulqh1DpAHn0ZUNMRBRu",
-            "image": "https://i.scdn.co/image/ab67616d00004851e2318a139e0f022870baac23",
-            "name": "Miles Davis And Milt Jackson Quintet",
-            "popularity": 25
-        },
-        {
-            "URL": "https://open.spotify.com/artist/2TVOscfpfIwOuHU17wcuB1",
-            "id": "2TVOscfpfIwOuHU17wcuB1",
-            "image": null,
-            "name": "Miles Davis (With Easy Mo Bee)",
-            "popularity": 22
-        },
-        {
-            "URL": "https://open.spotify.com/artist/2egOnWhcBtW7MXHWWdjBDn",
-            "id": "2egOnWhcBtW7MXHWWdjBDn",
-            "image": "https://i.scdn.co/image/ab67616d00004851e9c69fcd816c0f8c989969bf",
-            "name": "Charlie Parker & Miles Davis",
-            "popularity": 21
-        },
-        {
-            "URL": "https://open.spotify.com/artist/0LW6sREPWemmi5wZDhTh0M",
-            "id": "0LW6sREPWemmi5wZDhTh0M",
-            "image": "https://i.scdn.co/image/ab67616d000048514befea81f99fce7fe2b814ba",
-            "name": "Miles Davis And His Quintet",
-            "popularity": 6
-        },
-        {
-            "URL": "https://open.spotify.com/artist/7Mv1o1XH8W0lGePMKeiJ7Z",
-            "id": "7Mv1o1XH8W0lGePMKeiJ7Z",
-            "image": null,
-            "name": "Miles Davis And The Modern Jazz Giants",
-            "popularity": 4
-        },
-        {
-            "URL": "https://open.spotify.com/artist/50HpprWw7zqSFczDtvvbdM",
-            "id": "50HpprWw7zqSFczDtvvbdM",
-            "image": "https://i.scdn.co/image/ab67616d00004851c46ca306883e217563ba4496",
-            "name": "Miles Davis Septet",
-            "popularity": 3
-        },
-        {
-            "URL": "https://open.spotify.com/artist/6792Ts7YzD8dhGkgSHPNEL",
-            "id": "6792Ts7YzD8dhGkgSHPNEL",
-            "image": "https://i.scdn.co/image/ab67616d00004851e2318a139e0f022870baac23",
-            "name": "Miles Davis And Milt Jackson Sextet",
-            "popularity": 2
-        },
-        {
-            "URL": "https://open.spotify.com/artist/1KhL6KkQ8sKuFceCqhxNiP",
-            "id": "1KhL6KkQ8sKuFceCqhxNiP",
-            "image": null,
-            "name": "Miles Davis Moody",
-            "popularity": 1
-        }
+        <...>
     ]
+}
+#+end_src
+
+#+begin_src sh
+http GET :3000/get-albums artist=='{
+            "URL": "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4",
+            "id": "0kbYTNQb4Pb1rPbbaF0pT4",
+            "image": "https://i.scdn.co/image/b1af952a7fb8ac2c4467868d61b5752fc1a01cf0",
+            "name": "Miles Davis",
+            "popularity": 65
+        }'
+#+end_src
+
+#+begin_src json
+{
+    "artists": {
+        "URL": "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4",
+        "albums": [
+            {
+                "artists": [
+                    "Miles Davis"
+                ],
+                "image": "https://i.scdn.co/image/ab67616d0000485103cba7107452fc49b37ffc3e",
+                "name": "Circle In The Round",
+                "release_date": "1979-11",
+                "total_tracks": 10,
+                "tracks": [
+                    {
+                        "duration_s": 222.36,
+                        "name": "Two Bass Hit"
+                    },
+                    {
+                        "duration_s": 708.96,
+                        "name": "Love for Sale"
+                    },
+                    {
+                        "duration_s": 407.866,
+                        "name": "Blues No. 2"
+                    },
+                    {
+                        "duration_s": 1574.973,
+                        "name": "Circle In The Round"
+                    },
+                    {
+                        "duration_s": 355.56,
+                        "name": "Teo's Bag"
+                    },
+                    {
+                        "duration_s": 297.666,
+                        "name": "Side Car I"
+                    },
+                    {
+                        "duration_s": 213.8,
+                        "name": "Side Car II"
+                    },
+                    {
+                        "duration_s": 510.2,
+                        "name": "Splash"
+                    },
+                    {
+                        "duration_s": 527.986,
+                        "name": "Sanctuary"
+                    },
+                    {
+                        "duration_s": 1085.8,
+                        "name": "Guinnevere"
+                    }
+                ]
+            },
+            <...>
+        ],
+        "id": "0kbYTNQb4Pb1rPbbaF0pT4",
+        "image": "https://i.scdn.co/image/b1af952a7fb8ac2c4467868d61b5752fc1a01cf0",
+        "name": "Miles Davis",
+        "popularity": 65
+    }
 }
 #+end_src
