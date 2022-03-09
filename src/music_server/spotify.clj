@@ -13,14 +13,6 @@
        (map #(dissoc % :duration_ms))
        (assoc album :tracks)))
 
-(defn sort-albums-by-date
-  [albums]
-  (into (sorted-map-by (fn [key1 key2]
-                         (let [date_0 [(get-in albums [key1 :release_date]) key1]
-                               date_1 [(get-in albums [key2 :release_date]) key2]]
-                           (compare date_0 date_1))))
-        albums))
-
 (defn pick-albums-from-duplicates
   "Multiple albums can come in for the same title. Prefer ones with explicit tracks. If no explicit tracks are on an album, choose the first one."
   [albums]
