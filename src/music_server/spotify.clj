@@ -58,7 +58,7 @@
 
 (defn get-albums-for-artist-id
   "Given an artist id (an alphanumeric string) return a map of all the artist's albums on spotify."
-  [id]
+  [{id :id :as data}]
   (->> id
        album-ids-for-artist
        albums-for-ids
@@ -75,11 +75,8 @@
        (map process-artists)
        (map #(assoc (dissoc % :images) :image (:url (last (:images %)))))
        (map #(assoc (dissoc % :tracks) :tracks (map (fn [track] (select-keys track [:name :duration_s])) (:tracks %))))
-       (sort-by :release_date)))
-
-(defn get-album-data
-  [{id :id :as data}]
-  (assoc data :albums (get-albums-for-artist-id id)))
+       (sort-by :release_date)
+       (assoc data :albums)))
 
 (defn get-artists-matching-name
   [name]

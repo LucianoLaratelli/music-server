@@ -2,7 +2,7 @@
   "Entry point and server routes."
   (:require
    [jsonista.core :as j]
-   [music-server.spotify :refer [get-artists-matching-name get-album-data]]
+   [music-server.spotify :refer [get-artists-matching-name get-albums-for-artist-id]]
    [music-server.token :refer [start-token-loop]]
    [muuntaja.core :as m]
    [reitit.ring :as ring]
@@ -33,7 +33,7 @@
               (let [artist (j/read-value (get-in req [:query-params "artist"]) mapper)]
                 (if artist
                   {:status 200
-                   :body {:artists (get-album-data artist)}}
+                   :body {:artists (get-albums-for-artist-id artist)}}
                   {:status 404
                    :body "got no data"})))}]]
     {:data {:muuntaja m/instance
