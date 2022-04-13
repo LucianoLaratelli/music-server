@@ -2,6 +2,7 @@
   "Deals with calls to spotify and exposes wrappers for the server."
   (:require
    [clj-spotify.core :as spotify]
+   [clojure.pprint :as pp]
    [clojure.string :as s]
    [music-server.token :refer [token]]))
 
@@ -80,6 +81,10 @@
 
 (defn get-artists-matching-name
   [name]
+  (pp/pprint
+   (spotify/search {:q name
+                    :type "artist"}
+                   @token))
   (->> (sort-by :popularity >
                 (map #(select-keys % [:name :id :popularity :external_urls :images])
                      (filter #(> (:popularity %) 0)

@@ -7,7 +7,7 @@ REPL, eval =music-server.core=, then make requests on 3000. I've been using
 [[https://httpie.io/cli][httpie]]:
 
 #+begin_src sh
-http GET :3000/search-artists artist_name=="miles davis"
+http GET :3000/artists artist_name=="miles davis"
 #+end_src
 
 #+begin_src json
@@ -33,7 +33,7 @@ http GET :3000/search-artists artist_name=="miles davis"
 #+end_src
 
 #+begin_src sh
-http GET :3000/get-albums artist=='{
+http GET :3000/albums artist=='{
             "URL": "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4",
             "id": "0kbYTNQb4Pb1rPbbaF0pT4",
             "image": "https://i.scdn.co/image/b1af952a7fb8ac2c4467868d61b5752fc1a01cf0",

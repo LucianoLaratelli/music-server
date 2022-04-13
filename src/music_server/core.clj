@@ -20,7 +20,7 @@
 (def app
   (ring/ring-handler
    (ring/router
-    [["/search-artists"
+    [["/artists"
       {:get (fn [req]
               (let [name (get-in req [:query-params "artist_name"])]
                 (if name
@@ -28,7 +28,7 @@
                    :body {:artists (get-artists-matching-name name)}}
                   {:status 404
                    :body "got empty name"})))}]
-     ["/get-albums"
+     ["/albums"
       {:get (fn [req]
               (let [artist (j/read-value (get-in req [:query-params "artist"]) mapper)]
                 (if artist
